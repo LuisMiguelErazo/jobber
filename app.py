@@ -1,8 +1,8 @@
+import re
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
-import re
 
 # Load the data into a DataFrame
 df = pd.read_csv('df.csv')
