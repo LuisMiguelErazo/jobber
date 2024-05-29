@@ -1,15 +1,14 @@
+import re
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
-import re  # Import the re module
 
 # Load the data into a DataFrame
 df = pd.read_csv('df.csv')
 
 # Custom sorting function to sort alphabetically with numbers at the end
 def custom_sort(values):
-    # Separate strings that start with numbers
     alpha_part = sorted([v for v in values if not re.match(r'^\d', v)])
     numeric_part = sorted([v for v in values if re.match(r'^\d', v)])
     return alpha_part + numeric_part
@@ -65,8 +64,3 @@ def show_salaries(category, title):
 # Button to trigger the salary display
 if st.button('Show Salaries'):
     show_salaries(selected_category, selected_title)
-
-
-
-
-
