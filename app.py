@@ -1,14 +1,12 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
 import re  # Import the re module
 
+# Assume your data is in a CSV file called 'jobs.csv'
 # Load the data into a DataFrame
-df = pd.read_csv('df.csv')
+df = pd.read_csv('jobs.csv')
 
 # Custom sorting function to sort alphabetically with numbers at the end
 def custom_sort(values):
@@ -69,8 +67,6 @@ def show_salaries(category, title):
 if st.button('Show Salaries'):
     show_salaries(selected_category, selected_title)
 
-
-# In[ ]:
 
 
 
