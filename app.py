@@ -4,9 +4,8 @@ import numpy as np
 import streamlit as st
 import re  # Import the re module
 
-# Assume your data is in a CSV file called 'jobs.csv'
 # Load the data into a DataFrame
-df = pd.read_csv('jobs.csv')
+df = pd.read_csv('df.csv')
 
 # Custom sorting function to sort alphabetically with numbers at the end
 def custom_sort(values):
