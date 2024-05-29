@@ -1,31 +1,28 @@
-import re
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
+import re
 
 # Load the data into a DataFrame
 df = pd.read_csv('df.csv')
 
-# Custom sorting function to sort alphabetically with numbers at the end
+# Custom sorting function
 def custom_sort(values):
     alpha_part = sorted([v for v in values if not re.match(r'^\d', v)])
     numeric_part = sorted([v for v in values if re.match(r'^\d', v)])
     return alpha_part + numeric_part
 
-# Ensure the category and title options are sorted using the custom sorting function
+# Sorted categories and titles
 sorted_categories = custom_sort(df['category'].unique())
 sorted_titles = custom_sort(df['title'].unique())
 
-# Streamlit app
 st.title('Job Salary Explorer')
 
-# Create dropdowns
 selected_category = st.selectbox('Select Category:', sorted_categories)
 filtered_titles = custom_sort(df[df['category'] == selected_category]['title'].unique())
 selected_title = st.selectbox('Select Title:', filtered_titles)
 
-# Function to show salaries and plot
 def show_salaries(category, title):
     filtered_df = df[(df['category'] == category) & (df['title'] == title)]
     
@@ -61,6 +58,5 @@ def show_salaries(category, title):
 
     st.pyplot(fig)
 
-# Button to trigger the salary display
 if st.button('Show Salaries'):
     show_salaries(selected_category, selected_title)
